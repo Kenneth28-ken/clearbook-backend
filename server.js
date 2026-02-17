@@ -24,8 +24,12 @@ app.post("/trigger", async (req, res) => {
       }
     );
 
-    const text = await response.text();
-    res.status(200).send(text);
+   const text = await response.text();
+
+console.log("n8n status:", response.status);
+console.log("n8n response:", text);
+
+res.status(response.status).send(text);
 
   } catch (error) {
     console.error("Forwarding error:", error);
